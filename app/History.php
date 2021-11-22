@@ -9,12 +9,7 @@ class History extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'title' => 'required',
-        'body' => 'required',
-        );
-        
-        public function histories()
-        {
-            return $this->hasMany('App\History');
-        }    
+        'news_id' => 'required',
+        'edited_at' => 'required',
+     );
 }

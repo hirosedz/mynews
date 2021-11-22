@@ -66,6 +66,7 @@ class NewsController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, News::$rules);
+        
         $news = News::find($request->id);
         
         $news_form = $request->all();
