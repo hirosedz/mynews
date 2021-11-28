@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 use App\News;
 
+use App\History;
+use Carbon\Carbon;
+
 class NewsController extends Controller
 {
     //
@@ -63,6 +66,7 @@ class NewsController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, News::$rules);
+        
         $news = News::find($request->id);
         
         $news_form = $request->all();
@@ -82,6 +86,11 @@ class NewsController extends Controller
         
         
         $news->fill($news_form)->save();
+        
+        $history = new History();
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
         
         return redirect('admin/news');
     }

@@ -24,7 +24,8 @@
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
+       <link href="{{ asset('css/front.css') }}" rel="stylesheet">
+
     </head>
     <body>
         <div id="app">
@@ -54,8 +55,8 @@
                              {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"  role="button" 
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="＃"  role="button" 
+                                date-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
