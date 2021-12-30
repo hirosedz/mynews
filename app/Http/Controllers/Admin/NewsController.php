@@ -25,20 +25,20 @@ class NewsController extends Controller
      $this->validate($request, News::$rules);
      
      $news = new News;
-     $form = $request->all();
+     $news_form = $request->all();
      
-     if (isset($form['image'])) {
+     if (isset($news_form['image'])) {
      $path = Storage::disk('s3')->putFile('/',$news_form['image'],'public');
      $news->image_path = Storage::disk('s3')->url($path);
      } else {
          $news->image_path = null;
      }
      
-     unset($form['_token']);
+     unset($news_form['_token']);
      
-     unset($form['image']);
+     unset($news_form['image']);
      
-     $news->fill($form);
+     $news->fill($news_form);
      $news->save();
      
      return redirect('admin/news/create');
